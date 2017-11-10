@@ -23,6 +23,7 @@ def compute_parameters(train_data, train_labels):
     where the ith row corresponds to the ith digit class.
     '''
     eta = np.zeros((10, 64))
+
     return eta
 
 def plot_images(class_images):

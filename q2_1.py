@@ -44,13 +44,8 @@ class KNearestNeighbor(object):
         You should return the digit label provided by the algorithm
         '''
         distances=self.l2_distance(test_point)
-        print(distances)
-        # distances=np.sort(distances)
-        # neighbours=distances.shape[:1]
-        # res=[]
-        # for i in k:
-        #     res[neighbours[i]]=res[neighbours[i]]+1
-        digit = None
+        indice_larg=distances.argsort()[-k:][::-1]
+        digit = self.train_labels[indice_larg]
         return digit
 
 def cross_validation(train_data, train_labels, k_range=np.arange(1,16)):
