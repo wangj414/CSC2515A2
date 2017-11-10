@@ -43,6 +43,13 @@ class KNearestNeighbor(object):
 
         You should return the digit label provided by the algorithm
         '''
+        distances=self.l2_distance(test_point)
+        print(distances)
+        # distances=np.sort(distances)
+        # neighbours=distances.shape[:1]
+        # res=[]
+        # for i in k:
+        #     res[neighbours[i]]=res[neighbours[i]]+1
         digit = None
         return digit
 
