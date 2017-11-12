@@ -50,8 +50,8 @@ def plot_images(class_images):
         img_i = np.reshape(img_i, (8, 8))
         images.append(img_i)
     all_concat = np.concatenate(images, 1)
-    #plt.imshow(all_concat, cmap='gray')
-    #plt.show()
+    plt.imshow(all_concat, cmap='gray')
+    plt.show()
 
 
 def generate_new_data(eta):
@@ -61,7 +61,17 @@ def generate_new_data(eta):
 
     Plot these values
     '''
+    test=np.zeros((10,64))
+    for i in range(10):
+        temp=np.random.uniform(low=0, high=1, size=(64,))
+        test[i,:]=temp
     generated_data = np.zeros((10, 64))
+    for i in range(10):
+        for j in range(64):
+            if test[i,j]>eta[i,j]:
+                generated_data[i,j]=1
+            else:
+                generated_data[i,j]=0
     plot_images(generated_data)
 
 def generative_likelihood(bin_digits, eta):
@@ -129,7 +139,7 @@ def main():
     eta = compute_parameters(train_data, train_labels)
 
     # Evaluation
-    plot_images(eta)
+    #plot_images(eta)
 
     generate_new_data(eta)
 
