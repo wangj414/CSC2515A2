@@ -109,14 +109,25 @@ def main():
     knn = KNearestNeighbor(train_data, train_labels)
 
     # Example usage:
-    predicted_label = knn.query_knn(test_data[0], 1)
+    #predicted_label = knn.query_knn(test_data[0], 1)
+
+    ac_train1=classification_accuracy(knn, 1, train_data, train_labels)
+    ac_test1=classification_accuracy(knn, 1, test_data, test_labels)
+    print("Train Accuracy when k=1: "+str(ac_train1))
+    print("Test Accuracy when k=1: "+str(ac_test1))
+
+    ac_train15=classification_accuracy(knn, 15, train_data, train_labels)
+    ac_test15=classification_accuracy(knn, 15, test_data, test_labels)
+    print("Train Accuracy when k=15: "+str(ac_train15))
+    print("Test Accuracy when k=15: "+str(ac_test15))
+
 
     cross_validation(train_data, train_labels, k_range=np.arange(1, 16))
 
-    res=classification_accuracy(knn, 1, train_data, train_labels)
+    res=classification_accuracy(knn, 3, train_data, train_labels)
     print("Train Accuracy: "+str(res))
 
-    res = classification_accuracy(knn, 1, test_data, test_labels)
+    res = classification_accuracy(knn, 3, test_data, test_labels)
     print("Test Accuracy: " + str(res))
 
 if __name__ == '__main__':
